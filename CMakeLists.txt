@@ -57,7 +57,7 @@ list(APPEND PRJ_LIBRARIES ${Qt5Widgets_LIBRARIES})
 
 # set the sources ----------
 file(GLOB_RECURSE Sources "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
-file(GLOB_RECURSE QObjects "${CMAKE_CURRENT_SOURCE_DIR}/include/qobjects/*.h")
+file(GLOB_RECURSE QObjects "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
 list(APPEND PRJ_SOURCES ${QObjects})
 list(APPEND PRJ_SOURCES ${Sources})
 message(STATUS ${PRJ_SOURCES})
