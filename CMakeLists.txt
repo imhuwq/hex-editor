@@ -65,7 +65,7 @@ message(STATUS ${PRJ_SOURCES})
 
 
 # build the main ----------
-add_executable(main main.cpp ${PRJ_SOURCES})
-target_link_libraries(main ${PRJ_LIBRARIES})
-target_link_libraries(main debug ${PRJ_LIBRARIES_DEBUG})
+add_executable(hex_editor hex_editor.cpp ${PRJ_SOURCES})
+target_link_libraries(hex_editor ${PRJ_LIBRARIES})
+target_link_libraries(hex_editor debug ${PRJ_LIBRARIES_DEBUG})
 # ---------- build the main

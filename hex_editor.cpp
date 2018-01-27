@@ -5,7 +5,7 @@
 int main(int argc, char **argv) {
   QApplication app(argc, argv);
 
-  Window hex_editor;
+  MainWindow hex_editor;
   hex_editor.show();
 
   return app.exec();

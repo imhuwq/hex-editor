@@ -7,11 +7,11 @@
 
 #include "menu_bar_top.h"
 
-class Window : public QMainWindow {
+class MainWindow : public QMainWindow {
  public:
-  explicit Window(QWidget *parent = nullptr);
+  explicit MainWindow(QWidget *parent = nullptr);
 
-  ~Window();
+  ~MainWindow();
 
  private:
   TopMenuBar *top_menu_bar;
