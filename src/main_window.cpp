@@ -1,7 +1,7 @@
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
-  SetupSelfMeta();
+  SetupSelfState();
   SetupTopMenuBar();
 }
 
@@ -9,7 +9,7 @@ MainWindow::~MainWindow() {
   delete top_menu_bar;
 }
 
-void MainWindow::SetupSelfMeta() {
+void MainWindow::SetupSelfState() {
   this->setFixedSize(600, 800);
   this->setWindowTitle("Hex Editor");
   this->setObjectName("window");

@@ -3,8 +3,6 @@
 
 #include <QMenuBar>
 
-#include "menu_file.h"
-
 class TopMenuBar : public QMenuBar {
  public:
   explicit TopMenuBar(QWidget *parent);
@@ -12,10 +10,16 @@ class TopMenuBar : public QMenuBar {
 
  private:
   QMenu *file_menu;
+  QAction *action_new_file;
+  QAction *action_open_file;
+  QAction *action_save_file;
+  QAction *action_save_as_file;
 
-  void SetupSelfMeta();
+  void SetupSelfState();
 
   void SetupFileMenu();
+
+  void DestroyFileMenu();
 };
 
 #endif //HEX_EDITOR_MENU_BAR_TOP_H

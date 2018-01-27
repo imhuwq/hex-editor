@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <QMainWindow>
 
-#include "menu_bar_top.h"
+#include "top_menu_bar.h"
 
 class MainWindow : public QMainWindow {
  public:
@@ -16,7 +16,7 @@ class MainWindow : public QMainWindow {
  private:
   TopMenuBar *top_menu_bar;
 
-  void SetupSelfMeta();
+  void SetupSelfState();
 
   void SetupTopMenuBar();
 };
