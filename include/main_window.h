@@ -6,6 +6,7 @@
 #include <QMainWindow>
 
 #include "top_menu_bar.h"
+#include "body_board.h"
 
 class MainWindow : public QMainWindow {
  public:
@@ -15,10 +16,21 @@ class MainWindow : public QMainWindow {
 
  private:
   TopMenuBar *top_menu_bar;
+  BodyBoard *body_board;
 
   void SetupSelfState();
 
   void SetupTopMenuBar();
+
+  void DestroyTopMenuBar();
+
+  void SetupBodyBoard();
+
+  void DestroyBodyBoard();
+
+  void SetupBodyEditor();
+
+  void DestroyBodyEditor();
 };
 
 #endif //QT_TUTORIAL_MAIN_WINDOW_H
