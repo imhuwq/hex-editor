@@ -1,13 +1,12 @@
 #include <QApplication>
-#include <QPushButton>
 
-#include "window.h"
+#include "main_window.h"
 
 int main(int argc, char **argv) {
   QApplication app(argc, argv);
 
-  Window window;
-  window.show();
+  Window hex_editor;
+  hex_editor.show();
 
   return app.exec();
 }
