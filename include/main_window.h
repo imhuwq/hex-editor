@@ -4,6 +4,8 @@
 #include <QString>
 #include <QWidget>
 #include <QMainWindow>
+#include <QStyle>
+#include <QDesktopWidget>
 
 #include "top_menu_bar.h"
 #include "body_board.h"
@@ -19,6 +21,8 @@ class MainWindow : public QMainWindow {
   BodyBoard *body_board;
 
   void SetupSelfState();
+
+  void SetWindowToCenter();
 
   void SetupTopMenuBar();
 

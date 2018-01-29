@@ -1,3 +1,4 @@
+#include "application.h"
 #include "main_window.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
@@ -16,6 +17,19 @@ void MainWindow::SetupSelfState() {
   this->setFixedSize(800, 1000);
   this->setWindowTitle("Hex Editor");
   this->setObjectName("window");
+
+  SetWindowToCenter();
+}
+
+void MainWindow::SetWindowToCenter() {
+  setGeometry(
+      QStyle::alignedRect(
+          Qt::LeftToRight,
+          Qt::AlignCenter,
+          size(),
+          Application::desktop()->availableGeometry()
+      )
+  );
 }
 
 void MainWindow::SetupTopMenuBar() {
