@@ -1,3 +1,3 @@
-# qt-lab
-The Qt, Qt5.  
-Qt is pronounced Cute !
+# hex editor
+Let's make a better hex editor.
+Just another side project for fun!
