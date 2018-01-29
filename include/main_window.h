@@ -9,8 +9,10 @@
 
 #include "top_menu_bar.h"
 #include "body_board.h"
+#include "body_editor.h"
 
 class MainWindow : public QMainWindow {
+ Q_OBJECT
  public:
   explicit MainWindow(QWidget *parent = nullptr);
 
@@ -19,6 +21,7 @@ class MainWindow : public QMainWindow {
  private:
   TopMenuBar *top_menu_bar;
   BodyBoard *body_board;
+  BodyEditor *body_editor;
 
   void SetupSelfState();
 
@@ -35,6 +38,11 @@ class MainWindow : public QMainWindow {
   void SetupBodyEditor();
 
   void DestroyBodyEditor();
+
+  void ConnectSlotsAndSignals();
+
+ private slots:
+  void slotActionNewFileTriggered();
 };
 
 #endif //QT_TUTORIAL_MAIN_WINDOW_H

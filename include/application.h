@@ -19,7 +19,6 @@ class Application : public QApplication {
 
  private:
   MainWindow *main_window;
-  QString current_file;
 };
 
 #endif //HEX_EDITOR_APPLICATION_H

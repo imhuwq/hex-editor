@@ -10,6 +10,7 @@ BodyBoard::~BodyBoard() {
 }
 
 void BodyBoard::SetupSelfState() {
+  setObjectName("body_board");
   welcome = new QLabel("Welcome.");
   layout = new QVBoxLayout(this);
   layout->addWidget(welcome, 0, Qt::AlignHCenter);

@@ -5,6 +5,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   SetupSelfState();
   SetupTopMenuBar();
   SetupBodyBoard();
+
+  ConnectSlotsAndSignals();
 }
 
 MainWindow::~MainWindow() {
@@ -47,13 +49,24 @@ void MainWindow::SetupBodyBoard() {
 }
 
 void MainWindow::DestroyBodyBoard() {
-
+  delete body_board;
 }
 
 void MainWindow::SetupBodyEditor() {
-  DestroyBodyBoard();
+  body_editor = new BodyEditor();
+  if (this->centralWidget()) this->centralWidget()->setParent(nullptr);
+  this->setCentralWidget(body_editor);
 }
 
 void MainWindow::DestroyBodyEditor() {
+  delete body_editor;
+}
 
+void MainWindow::slotActionNewFileTriggered() {
+  if (!body_editor) SetupBodyEditor();
+  body_editor->CreateEmptyFile();
+}
+
+void MainWindow::ConnectSlotsAndSignals() {
+  connect(top_menu_bar->findChild<QAction *>(QString("action_new_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotActionNewFileTriggered);
 }
