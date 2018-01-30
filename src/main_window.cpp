@@ -62,11 +62,17 @@ void MainWindow::DestroyBodyEditor() {
   delete body_editor;
 }
 
-void MainWindow::slotActionNewFileTriggered() {
+void MainWindow::slotMenuNewFileTriggered() {
   if (!body_editor) SetupBodyEditor();
   body_editor->CreateEmptyFile();
 }
 
+void MainWindow::slotMenuOpenFileTriggered() {
+  if (!body_editor) SetupBodyEditor();
+  body_editor->OpenFile();
+}
+
 void MainWindow::ConnectSlotsAndSignals() {
-  connect(top_menu_bar->findChild<QAction *>(QString("action_new_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotActionNewFileTriggered);
+  connect(top_menu_bar->findChild<QAction *>(QString("action_new_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuNewFileTriggered);
+  connect(top_menu_bar->findChild<QAction *>(QString("action_open_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuOpenFileTriggered);
 }

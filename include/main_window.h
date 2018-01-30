@@ -42,7 +42,9 @@ class MainWindow : public QMainWindow {
   void ConnectSlotsAndSignals();
 
  private slots:
-  void slotActionNewFileTriggered();
+  void slotMenuNewFileTriggered();
+
+  void slotMenuOpenFileTriggered();
 };
 
 #endif //QT_TUTORIAL_MAIN_WINDOW_H

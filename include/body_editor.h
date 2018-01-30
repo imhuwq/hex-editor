@@ -4,6 +4,11 @@
 #include <QWidget>
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QIODevice>
 
 class BodyEditor : public QWidget {
  Q_OBJECT
@@ -12,6 +17,8 @@ class BodyEditor : public QWidget {
   ~BodyEditor();
 
   void CreateEmptyFile();
+
+  void OpenFile();
 
  private:
   QString current_file;

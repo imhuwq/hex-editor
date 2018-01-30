@@ -24,4 +24,20 @@ void BodyEditor::SetupSelfState() {
 void BodyEditor::CreateEmptyFile() {
   current_file = "";
   current_content = "";
+  text_editor->setText(current_content);
+}
+
+void BodyEditor::OpenFile() {
+  QString file_name = QFileDialog::getOpenFileName(this, "Open File...");
+  QFile file(file_name);
+  current_file = file_name;
+  if (!file.open(QIODevice::ReadOnly | QFile::Text)) {
+    QMessageBox::warning(this, "..", "Fail to open file");
+    return;
+  }
+
+  QTextStream in(&file);
+  current_content = in.readAll();
+  text_editor->setText(current_content);
+  file.close();
 }
