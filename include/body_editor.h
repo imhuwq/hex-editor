@@ -22,13 +22,18 @@ class BodyEditor : public QWidget {
 
   bool OpenFile();
 
+  bool SaveFile();
+
+  bool SaveAsFile();
+
  private:
   QString current_file;
-  QString current_content;
   QVBoxLayout *vertical_layout;
   QTextEdit *text_editor;
 
   void SetupSelfState();
+
+  bool WriteCurrentContentToFile(QString &);
 };
 
 #endif //HEX_EDITOR_BODY_EDITOR_H

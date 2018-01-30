@@ -27,8 +27,7 @@ bool BodyEditor::IsEmpty() {
 
 bool BodyEditor::CreateEmptyFile() {
   current_file = "";
-  current_content = "";
-  text_editor->setText(current_content);
+  text_editor->setText("");
   return true;
 }
 
@@ -42,8 +41,35 @@ bool BodyEditor::OpenFile() {
   }
 
   QTextStream in(&file);
-  current_content = in.readAll();
-  text_editor->setText(current_content);
+  QString text = in.readAll();
+  text_editor->setText(text);
   file.close();
   return true;
+}
+
+bool BodyEditor::WriteCurrentContentToFile(QString &file_name) {
+  QFile file(file_name);
+  if (!file.open(QFile::WriteOnly | QFile::Text)) {
+    QMessageBox::warning(this, "..", "File not opened for write.");
+    return false;
+  }
+  QTextStream out(&file);
+  out << text_editor->toPlainText();
+  file.flush();
+  file.close();
+  return true;
+}
+
+bool BodyEditor::SaveFile() {
+  if (current_file == "") SaveAsFile();
+  return WriteCurrentContentToFile(current_file);
+}
+
+bool BodyEditor::SaveAsFile() {
+  QString file_name = QFileDialog::getSaveFileName(this, "Save as");
+  if (WriteCurrentContentToFile(file_name)) {
+    current_file = file_name;
+    return true;
+  }
+  return false;
 }

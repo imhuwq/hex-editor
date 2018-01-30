@@ -75,7 +75,19 @@ void MainWindow::slotMenuOpenFileTriggered() {
   if (body_editor->IsEmpty() & !body_editor->OpenFile()) SetupBodyBoard();
 }
 
+void MainWindow::slotMenuSaveFileTriggered() {
+  if (!body_editor | this->centralWidget()->objectName() != "body_editor") return;
+  body_editor->SaveFile();
+}
+
+void MainWindow::slotMenuSaveAsFileTriggered() {
+  if (!body_editor | this->centralWidget()->objectName() != "body_editor") return;
+  body_editor->SaveAsFile();
+}
+
 void MainWindow::ConnectSlotsAndSignals() {
   connect(top_menu_bar->findChild<QAction *>(QString("action_new_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuNewFileTriggered);
   connect(top_menu_bar->findChild<QAction *>(QString("action_open_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuOpenFileTriggered);
+  connect(top_menu_bar->findChild<QAction *>(QString("action_save_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuSaveFileTriggered);
+  connect(top_menu_bar->findChild<QAction *>(QString("action_save_as_file"), Qt::FindChildrenRecursively), &QAction::triggered, this, &MainWindow::slotMenuSaveAsFileTriggered);
 }
