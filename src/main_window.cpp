@@ -44,7 +44,8 @@ void MainWindow::DestroyTopMenuBar() {
 };
 
 void MainWindow::SetupBodyBoard() {
-  body_board = new BodyBoard(this);
+  if (!body_board) body_board = new BodyBoard(this);
+  if (this->centralWidget()) this->centralWidget()->setParent(nullptr);
   this->setCentralWidget(body_board);
 }
 
@@ -53,7 +54,7 @@ void MainWindow::DestroyBodyBoard() {
 }
 
 void MainWindow::SetupBodyEditor() {
-  body_editor = new BodyEditor();
+  if (!body_editor) body_editor = new BodyEditor();
   if (this->centralWidget()) this->centralWidget()->setParent(nullptr);
   this->setCentralWidget(body_editor);
 }
@@ -63,13 +64,15 @@ void MainWindow::DestroyBodyEditor() {
 }
 
 void MainWindow::slotMenuNewFileTriggered() {
-  if (!body_editor) SetupBodyEditor();
+  SetupBodyEditor();
   body_editor->CreateEmptyFile();
 }
 
 void MainWindow::slotMenuOpenFileTriggered() {
-  if (!body_editor) SetupBodyEditor();
-  body_editor->OpenFile();
+  SetupBodyEditor();
+
+  // TODO: & 和 && 的区别
+  if (body_editor->IsEmpty() & !body_editor->OpenFile()) SetupBodyBoard();
 }
 
 void MainWindow::ConnectSlotsAndSignals() {

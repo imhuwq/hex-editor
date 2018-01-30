@@ -16,9 +16,11 @@ class BodyEditor : public QWidget {
   explicit BodyEditor(QWidget *parent = 0);
   ~BodyEditor();
 
-  void CreateEmptyFile();
+  bool IsEmpty();
 
-  void OpenFile();
+  bool CreateEmptyFile();
+
+  bool OpenFile();
 
  private:
   QString current_file;

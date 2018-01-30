@@ -19,9 +19,9 @@ class MainWindow : public QMainWindow {
   ~MainWindow();
 
  private:
-  TopMenuBar *top_menu_bar;
-  BodyBoard *body_board;
-  BodyEditor *body_editor;
+  TopMenuBar *top_menu_bar = nullptr;
+  BodyBoard *body_board = nullptr;
+  BodyEditor *body_editor = nullptr;
 
   void SetupSelfState();
 
@@ -45,6 +45,10 @@ class MainWindow : public QMainWindow {
   void slotMenuNewFileTriggered();
 
   void slotMenuOpenFileTriggered();
+
+  void slotMenuSaveFileTriggered();
+
+  void slotMenuSaveAsFileTriggered();
 };
 
 #endif //QT_TUTORIAL_MAIN_WINDOW_H
